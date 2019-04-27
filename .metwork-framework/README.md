@@ -1,7 +1,8 @@
 ## What is it ?
 
 This is a [jinja2](http://jinja.pocoo.org/) extension to access to system
-environment variables.
+environment variables. It is usefull if you have dynamically generated
+variable names.
 
 ## Syntax
 
