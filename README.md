@@ -13,29 +13,37 @@
 
 [//]: # (TABLE_OF_CONTENTS_PLACEHOLDER)
 
-Traceback (most recent call last):
-  File "/opt/metwork-mfext-master/opt/python3/bin/envtpl", line 11, in <module>
-    sys.exit(main())
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/envtpl.py", line 79, in main
-    not args.reduce_multi_blank_lines)
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/envtpl.py", line 114, in process_file
-    keep_multi_blank_lines=keep_multi_blank_lines)
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/envtpl.py", line 166, in _render_string
-    undefined, keep_multi_blank_lines=keep_multi_blank_lines)
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/envtpl.py", line 212, in _render
-    output = template.render(**variables)
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "<template>", line 9, in top-level template code
-  File "/opt/metwork-mfext-master/opt/python3/lib/python3.7/site-packages/envtpl.py", line 256, in getenv
-    raise Exception("can't find %s environnement variable" % value)
-Exception: can't find ENV_VAR environnement variable
+## What is it ?
+
+This is a [jinja2](http://jinja.pocoo.org/) extension to access to system
+environment variables. It is usefull if you have dynamically generated
+variable names.
+
+## Syntax
+
+The syntax is `{{ 'ENV_VAR'|getenv }}` to access to the `ENV_VAR` environment
+variable. Don't forget the quotes around `ENV_VAR` !
+
+If you want to provide a default value to avoid an exception if the corresponding
+environment variable does not exist, you can use the following syntax:
+`{{ 'ENV_VAR'|getenv('default_value') }}`.
+
+## Examples
+
+```python
+
+from jinja2 import Template, Environment
+
+# We load the extension in a jinja2 Environment
+env = Environment(extensions=["jinja2_getenv_extension.GetenvExtension"])
+
+# For the example, we use a template from a simple string
+template = env.from_string("the value of HOME environment variable is: "
+                           "{{ 'HOME'|getenv }}")
+result = template.render()
+
+# [...]
+```
 
 
 
