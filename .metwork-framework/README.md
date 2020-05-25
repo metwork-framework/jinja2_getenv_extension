@@ -6,12 +6,12 @@ variable names.
 
 ## Syntax
 
-The syntax is `{{ 'ENV_VAR'|getenv }}` to access to the `ENV_VAR` environment
+The syntax is `{% raw %}{{ 'ENV_VAR'|getenv }}{% endraw %}` to access to the `ENV_VAR` environment
 variable. Don't forget the quotes around `ENV_VAR` !
 
 If you want to provide a default value to avoid an exception if the corresponding
 environment variable does not exist, you can use the following syntax:
-`{{ 'ENV_VAR'|getenv('default_value') }}`.
+`{% raw %}{{ 'ENV_VAR'|getenv('default_value') }}{% endraw %}`.
 
 ## Examples
 
@@ -24,7 +24,7 @@ env = Environment(extensions=["jinja2_getenv_extension.GetenvExtension"])
 
 # For the example, we use a template from a simple string
 template = env.from_string("the value of HOME environment variable is: "
-                           "{{ 'HOME'|getenv }}")
+                           "{% raw %}{{ 'HOME'|getenv }}{% endraw %}")
 result = template.render()
 
 # [...]
