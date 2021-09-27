@@ -3,7 +3,7 @@ import jinja2
 from jinja2.ext import Extension
 
 
-@jinja2.evalcontextfilter
+@jinja2.pass_eval_context
 def getenv(eval_ctx, value, default=None):
     result = os.environ.get(value, default)
     if result is None:
