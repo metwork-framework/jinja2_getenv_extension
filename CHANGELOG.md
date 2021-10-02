@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v1.0.1 (2021-10-01)
+
+- No interesting change
+
+## v1.0.0 (2021-10-01)
+
+### Bug Fixes
+
+- replace deprecated evalcontextfilter (#9)
+
 ## v0.0.4 (2020-01-31)
 
 - No interesting change
