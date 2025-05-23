@@ -20,7 +20,7 @@ def test_extension1():
 def test_extension2():
     env = Environment(extensions=["jinja2_getenv_extension.GetenvExtension"])
     try:
-        del(os.environ["FOOBAR"])
+        del (os.environ["FOOBAR"])
     except KeyError:
         pass
     template = env.from_string("test {{ \"FOOBAR\"|getenv }}")
@@ -31,7 +31,7 @@ def test_extension2():
 def test_extension3():
     env = Environment(extensions=["jinja2_getenv_extension.GetenvExtension"])
     try:
-        del(os.environ["FOOBAR"])
+        del (os.environ["FOOBAR"])
     except KeyError:
         pass
     template = env.from_string("test {{ \"FOOBAR\"|getenv(\"foo\") }}")
