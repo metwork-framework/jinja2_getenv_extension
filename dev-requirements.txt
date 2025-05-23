@@ -1,3 +1,4 @@
 -r requirements.txt
 pytest
 flake8
+setuptools; python_version > "3.11"
